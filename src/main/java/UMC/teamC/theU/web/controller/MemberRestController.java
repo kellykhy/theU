@@ -31,4 +31,10 @@ public class MemberRestController {
 
         return ApiResponse.onSuccess(getResultDTO);
     }
+    @PostMapping("/login")
+    public ApiResponse<MemberResponseDTO.LoginDTO> join(@RequestBody @Valid MemberRequestDTO.LoginDto request){
+        Member member = memberCommandService.loginMember(request);
+
+        return ApiResponse.onSuccess(MemberConverter.loginResultDTO(member));
+    }
 }

@@ -2,6 +2,7 @@ package UMC.teamC.theU.service;
 
 import UMC.teamC.theU.apiPayload.code.status.ErrorStatus;
 import UMC.teamC.theU.apiPayload.exception.handler.InformationHandler;
+import UMC.teamC.theU.apiPayload.exception.handler.MemberHandler;
 import UMC.teamC.theU.apiPayload.exception.handler.TeamHandler;
 import UMC.teamC.theU.converter.MemberConverter;
 import UMC.teamC.theU.entity.*;
@@ -77,5 +78,18 @@ public class MemberServiceImpl implements MemberService {
         return MemberResponseDTO.GetResultDTO.builder()
                 .personDTOList(personDTOList)
                 .build();
+    }
+
+    @Override
+    @Transactional
+    public Member loginMember(MemberRequestDTO.LoginDto loginDto) {
+        Team team = teamRepository.findById(loginDto.getTeamId()).orElseThrow(() -> new TeamHandler(ErrorStatus.TEAM_NOT_FOUND));
+        List<Member> memberList = team.getMemberList();
+        for (Member member : memberList){
+            if (loginDto.getPasswd().equals(member.getPasswd()) && loginDto.getName().equals(member.getName())){
+                return member;
+            }
+        }
+        throw new MemberHandler(ErrorStatus.INVALID_USER);
     }
 }

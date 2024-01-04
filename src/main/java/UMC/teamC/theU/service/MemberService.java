@@ -9,4 +9,5 @@ import java.util.List;
 public interface MemberService {
     public Member joinMember(MemberRequestDTO.JoinDto joinDto);
     public MemberResponseDTO.GetResultDTO getMembers(MemberRequestDTO.GetDto getDto);
+    public Member loginMember(MemberRequestDTO.LoginDto loginDto);
 }

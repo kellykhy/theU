@@ -51,7 +51,10 @@ public enum ErrorStatus implements BaseErrorCode {
     TEAM_NOT_FOUND(HttpStatus.NOT_FOUND, "TEAM_404_1", "팀이 존재하지 않습니다."),
 
     // Information
-    INFORMATION_NOT_FOUND(HttpStatus.NOT_FOUND, "INFORMATION_404_1", "프로필 항목이 존재하지 않습니다.")
+    INFORMATION_NOT_FOUND(HttpStatus.NOT_FOUND, "INFORMATION_404_1", "프로필 항목이 존재하지 않습니다."),
+
+    // Member
+    INVALID_USER(HttpStatus.UNAUTHORIZED, "LOGIN_401", "로그인 실패")
     ;
 
 
