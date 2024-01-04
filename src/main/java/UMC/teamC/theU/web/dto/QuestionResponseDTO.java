@@ -11,10 +11,10 @@ import java.util.Map;
 
 public class QuestionResponseDTO {
 
-    @Builder
-    @Getter
-    @AllArgsConstructor
-    @NoArgsConstructor
+        @Builder
+        @Getter
+        @AllArgsConstructor
+        @NoArgsConstructor
     public static class QuestionDTO {
         private Long id;
         private Long mamberId;

@@ -3,6 +3,7 @@ package UMC.teamC.theU.web.controller;
 import UMC.teamC.theU.apiPayload.ApiResponse;
 import UMC.teamC.theU.converter.TeamConverter;
 import UMC.teamC.theU.service.TeamService;
+import UMC.teamC.theU.web.dto.MemberRequestDTO;
 import UMC.teamC.theU.web.dto.TeamRequestDTO;
 import UMC.teamC.theU.web.dto.TeamResponseDTO;
 import io.swagger.v3.oas.annotations.Operation;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController("team")
+@RestController
 @RequiredArgsConstructor
 public class TeamController {
     private final TeamService teamService;
@@ -31,8 +32,8 @@ public class TeamController {
     @Parameters({
             @Parameter(name = "createDTO", description = "팀(방)에 대해 필요한 정보입니다. RequestBody로 넘겨주세요, informationList는 상세 정보의 String List 입니다.")
     })
-    @PostMapping
-    public ApiResponse<TeamResponseDTO.CreateResponse> createTeam(@Valid @RequestBody TeamRequestDTO.CreateDTO createDTO) {
+    @PostMapping("team")
+    public ApiResponse<TeamResponseDTO.CreateResponse> createTeam(@RequestBody TeamRequestDTO.CreateDTO createDTO) {
         return ApiResponse.onSuccess(teamService.createTeam(createDTO));
     }
 

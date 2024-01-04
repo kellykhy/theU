@@ -23,6 +23,11 @@ public class TeamRequestDTO {
 
         private LocalDate date;
 
+        private String name;
+        private String passwd;
+        private String introduce;
+
         private List<String> informationList;
+        private List<String> answer;
     }
 }

@@ -36,6 +36,7 @@ public class MemberServiceImpl implements MemberService {
         Member newMember = MemberConverter.toMember(joinDto, nowTeam);
         memberRepository.save(newMember);
         List<MemberInformation> memberInformationList = new ArrayList<>();
+
         if (joinDto.getAnswer()!=null){
             for (Long key : joinDto.getAnswer().keySet()) {
                 Information information = informationRepository.findById(key).orElseThrow(() -> new InformationHandler(ErrorStatus.INFORMATION_NOT_FOUND));
