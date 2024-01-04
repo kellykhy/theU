@@ -7,6 +7,6 @@ import java.util.List;
 public interface QuestionRepository {
     Long save(Question question);
 
-    List<Question> findAll();
+    List<Question> findAll(Long teamId);
 
 }

@@ -21,8 +21,8 @@ public class JpaQuestionRepository implements QuestionRepository {
     }
 
     @Override
-    public List<Question> findAll(){
-        return em.createQuery("select m from Question m", Question.class)
+    public List<Question> findAll(Long teamId){
+        return em.createQuery("select m from Question m where m.team.id = :teamId", Question.class)
                 .getResultList();
     }
 

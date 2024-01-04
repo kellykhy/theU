@@ -23,8 +23,8 @@ public class QuestionService {
         return question.getId();
     }
 
-    public List<Question> findQuestions()
+    public List<Question> findQuestions(Long teamId)
     {
-        return questionRepository.findAll();
+        return questionRepository.findAll(teamId);
     }
 }

@@ -9,10 +9,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,8 +51,8 @@ public class QuestionController {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "COMMON200",description = "OK, 성공"),
     })
     @GetMapping("/questions")
-    public ApiResponse<List<QuestionResponseDTO.QuestionDTO>> getQuestionList() {
-        List<Question> questionList = questionService.findQuestions();
+    public ApiResponse<List<QuestionResponseDTO.QuestionDTO>> getQuestionList(@RequestParam("teamId") Long teamId) {
+        List<Question> questionList = questionService.findQuestions(teamId);
 
         List<QuestionResponseDTO.QuestionDTO> questionDTOList = new ArrayList<>();
 
