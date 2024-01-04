@@ -17,6 +17,6 @@ public class Information extends BaseEntity {
     private String question;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "group_id")
+    @JoinColumn(name = "team_id")
     private Team team;
 }
