@@ -53,8 +53,8 @@ public class MemberServiceImpl implements MemberService {
     public MemberResponseDTO.GetResultDTO getMembers(MemberRequestDTO.GetDto getDto) {
         Team team = teamRepository.findById(getDto.getTeam_id()).orElseThrow(() -> new TeamHandler(ErrorStatus.TEAM_NOT_FOUND));
         HashMap<Long,String> informationMap = new HashMap<>();
-        for (Question question:team.getQuestionList()){
-            informationMap.put(question.getId(), question.getContent());
+        for (Information information:team.getInformationList()){
+            informationMap.put(information.getId(), information.getQuestion());
         }
         List<Member> memberList = team.getMemberList();
         List<MemberResponseDTO.PersonDTO> personDTOList = new ArrayList<>();
