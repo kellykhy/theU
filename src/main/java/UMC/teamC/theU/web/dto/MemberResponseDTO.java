@@ -42,4 +42,11 @@ public class MemberResponseDTO {
         String question;
         String answer;
     }
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class LoginDTO{
+        Long memberId;
+    }
 }

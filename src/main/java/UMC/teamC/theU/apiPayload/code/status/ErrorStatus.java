@@ -29,7 +29,10 @@ public enum ErrorStatus implements BaseErrorCode {
     PAGE_NUMBER_BAD_REQUEST(HttpStatus.BAD_REQUEST, "PAGENUMBER_400_1", "페이지 번호는 1 이상이어야 합니다."),
 
     // Information
-    INFORMATION_NOT_FOUND(HttpStatus.NOT_FOUND, "INFORMATION_404_1", "프로필 항목이 존재하지 않습니다.")
+    INFORMATION_NOT_FOUND(HttpStatus.NOT_FOUND, "INFORMATION_404_1", "프로필 항목이 존재하지 않습니다."),
+
+    // Member
+    INVALID_USER(HttpStatus.UNAUTHORIZED, "LOGIN_401", "로그인 실패")
     ;
 
 

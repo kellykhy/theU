@@ -8,7 +8,6 @@ import java.util.Map;
 
 public class MemberRequestDTO {
     @Getter
-    @Builder
     public static class JoinDto{
         String name;
         String passwd;
@@ -19,5 +18,11 @@ public class MemberRequestDTO {
     @Getter
     public static class GetDto{
         Long team_id;
+    }
+    @Getter
+    public static class LoginDto{
+        Long teamId;
+        String name;
+        String passwd;
     }
 }

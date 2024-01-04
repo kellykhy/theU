@@ -24,4 +24,9 @@ public class MemberConverter {
                 .introduction(joinDto.getIntroduce())
                 .build();
     }
+    public static MemberResponseDTO.LoginDTO loginResultDTO(Member member){
+        return MemberResponseDTO.LoginDTO.builder()
+                .memberId(member.getId())
+                .build();
+    }
 }
