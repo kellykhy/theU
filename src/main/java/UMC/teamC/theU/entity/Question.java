@@ -6,9 +6,10 @@ import lombok.*;
 
 @Entity
 @Getter
+@Setter
 @AllArgsConstructor
 @Builder
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 public class Question extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
