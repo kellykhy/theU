@@ -1,6 +1,5 @@
 package UMC.teamC.theU.web.dto;
 
-import lombok.Builder;
 import lombok.Getter;
 
 import java.util.Map;
@@ -17,12 +16,13 @@ public class MemberRequestDTO {
     }
     @Getter
     public static class GetDto{
-        Long team_id;
+        Long teamId;
     }
     @Getter
     public static class LoginDto{
         Long teamId;
         String name;
         String passwd;
+        String enterCoed;
     }
 }

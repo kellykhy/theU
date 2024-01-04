@@ -21,18 +21,15 @@ public enum ErrorStatus implements BaseErrorCode {
     MEMBER_NOT_FOUND(HttpStatus.BAD_REQUEST, "MEMBER_400_1", "사용자가 없습니다."),
     NICKNAME_NOT_EXIST(HttpStatus.BAD_REQUEST, "MEMBER_400_2", "닉네임은 필수 입니다."),
 
-    // MemberMission
-    MEMBER_MISSION_NOT_FOUND(HttpStatus.BAD_REQUEST, "MEMBERMISSION_400_1", "회원이 도전중인 미션을 찾을 수 없습니다."),
-
-    TEAM_NOT_FOUND(HttpStatus.BAD_REQUEST, "TEAM_NOT_FOUND_400_1", "team을 찾을 수 없음."),
-    // paging
-    PAGE_NUMBER_BAD_REQUEST(HttpStatus.BAD_REQUEST, "PAGENUMBER_400_1", "페이지 번호는 1 이상이어야 합니다."),
-
     // Information
     INFORMATION_NOT_FOUND(HttpStatus.NOT_FOUND, "INFORMATION_404_1", "프로필 항목이 존재하지 않습니다."),
 
     // Member
-    INVALID_USER(HttpStatus.UNAUTHORIZED, "LOGIN_401", "로그인 실패")
+    INVALID_USER(HttpStatus.UNAUTHORIZED, "LOGIN_401", "로그인 실패"),
+
+    TEAM_NOT_FOUND(HttpStatus.UNAUTHORIZED, "TEAM_NOT_FOUND_401", "팀을 찾을 수 없음"),
+
+    BAD_ENTER_CODE(HttpStatus.UNAUTHORIZED, "ENTER_COED_401", "입장 코드 불일치"),
     ;
 
 

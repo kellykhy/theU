@@ -1,6 +1,7 @@
 package UMC.teamC.theU.service;
 
 import UMC.teamC.theU.apiPayload.code.status.ErrorStatus;
+import UMC.teamC.theU.apiPayload.exception.GeneralException;
 import UMC.teamC.theU.apiPayload.exception.handler.InformationHandler;
 import UMC.teamC.theU.apiPayload.exception.handler.MemberHandler;
 import UMC.teamC.theU.apiPayload.exception.handler.TeamHandler;
@@ -51,8 +52,8 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     @Transactional
-    public MemberResponseDTO.GetResultDTO getMembers(MemberRequestDTO.GetDto getDto) {
-        Team team = teamRepository.findById(getDto.getTeam_id()).orElseThrow(() -> new TeamHandler(ErrorStatus.TEAM_NOT_FOUND));
+    public MemberResponseDTO.GetResultDTO getMembers(Long teamId) {
+        Team team = teamRepository.findById(teamId).orElseThrow(() -> new TeamHandler(ErrorStatus.TEAM_NOT_FOUND));
         HashMap<Long,String> informationMap = new HashMap<>();
         for (Information information:team.getInformationList()){
             informationMap.put(information.getId(), information.getQuestion());
@@ -82,9 +83,15 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     @Transactional
-    public Member loginMember(MemberRequestDTO.LoginDto loginDto) {
+    public Member loginMember(MemberRequestDTO.LoginDto loginDto, String teamUrl) {
         Team team = teamRepository.findById(loginDto.getTeamId()).orElseThrow(() -> new TeamHandler(ErrorStatus.TEAM_NOT_FOUND));
+
+        if(!team.getEnterCode().equals(loginDto.getEnterCoed())) {
+            throw new GeneralException(ErrorStatus.BAD_ENTER_CODE);
+        }
+
         List<Member> memberList = team.getMemberList();
+
         for (Member member : memberList){
             if (loginDto.getPasswd().equals(member.getPasswd()) && loginDto.getName().equals(member.getName())){
                 return member;

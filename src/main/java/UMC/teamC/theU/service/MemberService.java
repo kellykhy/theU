@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface MemberService {
     public Member joinMember(MemberRequestDTO.JoinDto joinDto);
-    public MemberResponseDTO.GetResultDTO getMembers(MemberRequestDTO.GetDto getDto);
-    public Member loginMember(MemberRequestDTO.LoginDto loginDto);
+    public MemberResponseDTO.GetResultDTO getMembers(Long teamId);
+    public Member loginMember(MemberRequestDTO.LoginDto loginDto, String teamUrl);
 }
