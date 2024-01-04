@@ -22,7 +22,11 @@ public class Team extends BaseEntity {
 
     private String subtitle;
 
+    private String introduction;
+
     private LocalDate date;
+
+    private String enterCode;
 
     @OneToMany(mappedBy = "team", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Member> memberList = new ArrayList<>();
@@ -32,4 +36,8 @@ public class Team extends BaseEntity {
 
     @OneToMany(mappedBy = "team", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Question> questionList = new ArrayList<>();
+
+    public void setEnterCode(String enterCode) {
+        this.enterCode = enterCode;
+    }
 }
