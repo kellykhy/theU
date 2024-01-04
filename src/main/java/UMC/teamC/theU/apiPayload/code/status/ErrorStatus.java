@@ -45,7 +45,13 @@ public enum ErrorStatus implements BaseErrorCode {
     MEMBER_MISSION_NOT_FOUND(HttpStatus.BAD_REQUEST, "MEMBERMISSION_400_1", "회원이 도전중인 미션을 찾을 수 없습니다."),
 
     // paging
-    PAGE_NUMBER_BAD_REQUEST(HttpStatus.BAD_REQUEST, "PAGENUMBER_400_1", "페이지 번호는 1 이상이어야 합니다.")
+    PAGE_NUMBER_BAD_REQUEST(HttpStatus.BAD_REQUEST, "PAGENUMBER_400_1", "페이지 번호는 1 이상이어야 합니다."),
+
+    // Team
+    TEAM_NOT_FOUND(HttpStatus.NOT_FOUND, "TEAM_404_1", "팀이 존재하지 않습니다."),
+
+    // Information
+    INFORMATION_NOT_FOUND(HttpStatus.NOT_FOUND, "INFORMATION_404_1", "프로필 항목이 존재하지 않습니다.")
     ;
 
 
