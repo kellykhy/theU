@@ -2,6 +2,7 @@ package UMC.teamC.theU.web.controller;
 
 import UMC.teamC.theU.apiPayload.ApiResponse;
 import UMC.teamC.theU.entity.Question;
+import UMC.teamC.theU.entity.Team;
 import UMC.teamC.theU.service.QuestionService;
 import UMC.teamC.theU.web.dto.QuestionResponseDTO;
 import io.swagger.v3.oas.annotations.Operation;
@@ -26,21 +27,17 @@ public class QuestionController {
 
     @Operation(
             summary = "질문 추가 API입니다.",
-            description = "질문 추가 API입니다."
+            description = "질문 추가 API입니다. QuestionForm은 memberId와 content(질문)을 적어주시면 됩니다. Body로 넘겨주셔야 합니다."
     )
     @ApiResponses({
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "COMMON200",description = "OK, 성공"),
     })
     @Parameters({
-            @Parameter(name = "QuestionForm", description = "QuestionForm은 memberId와 content(질문)을 적어주시면 됩니다. Body로 넘겨주셔야 합니다.")
+            @Parameter(name = "teamId", description = "teadId 값을 넘겨주셔야 합니다.")
     })
     @PostMapping("/questions/new")
-    public Long create(@RequestBody QuestionForm form){
-        Question question = new Question();
-        question.setContent(form.getContent());
-        question.setMemberId(form.getMemberId());
-
-        return questionService.join(question);
+    public Long create(@RequestBody QuestionForm form, @RequestParam(name="teamId") Long teamId){
+        return questionService.join(form, teamId);
     }
 
     @Operation(
@@ -49,6 +46,9 @@ public class QuestionController {
     )
     @ApiResponses({
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "COMMON200",description = "OK, 성공"),
+    })
+    @Parameters({
+            @Parameter(name = "teamId", description = "teadId 값을 넘겨주셔야 합니다.")
     })
     @GetMapping("/questions")
     public ApiResponse<List<QuestionResponseDTO.QuestionDTO>> getQuestionList(@RequestParam("teamId") Long teamId) {

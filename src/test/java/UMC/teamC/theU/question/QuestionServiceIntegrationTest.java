@@ -48,13 +48,13 @@ public class QuestionServiceIntegrationTest {
         question.setId(1L);
         question.setMemberId(1L);
         question.setContent("test question");
-        Team t = Team.builder()
-                .id(1L)
-                .title("test title")
-                .subtitle("test subtitle")
-                .build();
-        em.persist(t);
-        question.setTeam(t);
+//        Team t = Team.builder()
+//                .id(1L)
+//                .title("test title")
+//                .subtitle("test subtitle")
+//                .build();
+//        em.persist(t);
+//        question.setTeam(t);
 
         //when
         Long saveId = questionService.join(question);
